@@ -27,6 +27,8 @@ services:
   nginx:
     ports:
       - "8087:80"
+    networks:
+      - default
 
   powersync:
     environment:
