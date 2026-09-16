@@ -1,1 +1,18 @@
 
+services:
+
+  web:
+    env_file:
+      - ./config/wger-local.env
+
+  celery_worker:
+    env_file:
+      - ./config/wger-local.env
+
+  celery_beat:
+    env_file:
+      - ./config/wger-local.env
+
+  db:
+    env_file:
+      - ./config/wger-local.env
