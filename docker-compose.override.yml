@@ -1,18 +1,63 @@
-
 services:
 
   web:
-    env_file:
-      - ./config/wger-local.env
+    environment:
+      SECRET_KEY: ${SECRET_KEY}
+      SITE_URL: ${SITE_URL}
+      TIME_ZONE: ${TIME_ZONE}
+      TZ: ${TZ}
+      ALLOWED_HOSTS: ${ALLOWED_HOSTS}
+      CSRF_TRUSTED_ORIGINS: ${CSRF_TRUSTED_ORIGINS}
+      X_FORWARDED_PROTO_HEADER_SET: ${X_FORWARDED_PROTO_HEADER_SET}
+      USE_X_FORWARDED_HOST: ${USE_X_FORWARDED_HOST}
 
-  celery_worker:
-    env_file:
-      - ./config/wger-local.env
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+      PS_DATABASE_URI: ${PS_DATABASE_URI}
+      PS_STORAGE_PG_URI: ${PS_STORAGE_PG_URI}
 
-  celery_beat:
-    env_file:
-      - ./config/wger-local.env
+      JWT_PUBLIC_KEY: ${JWT_PUBLIC_KEY}
+      JWT_PRIVATE_KEY: ${JWT_PRIVATE_KEY}
 
   db:
-    env_file:
-      - ./config/wger-local.env
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+      TZ: ${TZ}
+
+  powersync:
+    environment:
+      PS_STORAGE_PG_URI: ${PS_STORAGE_PG_URI}
+      PS_JWKS_URL: http://web:8000/api/v2/powersync-keys
+
+  celery_worker:
+    environment:
+      SECRET_KEY: ${SECRET_KEY}
+      SITE_URL: ${SITE_URL}
+      TIME_ZONE: ${TIME_ZONE}
+      TZ: ${TZ}
+      ALLOWED_HOSTS: ${ALLOWED_HOSTS}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+      PS_DATABASE_URI: ${PS_DATABASE_URI}
+      PS_STORAGE_PG_URI: ${PS_STORAGE_PG_URI}
+      JWT_PUBLIC_KEY: ${JWT_PUBLIC_KEY}
+      JWT_PRIVATE_KEY: ${JWT_PRIVATE_KEY}
+
+  celery_beat:
+    environment:
+      SECRET_KEY: ${SECRET_KEY}
+      SITE_URL: ${SITE_URL}
+      TIME_ZONE: ${TIME_ZONE}
+      TZ: ${TZ}
+      ALLOWED_HOSTS: ${ALLOWED_HOSTS}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+      PS_DATABASE_URI: ${PS_DATABASE_URI}
+      PS_STORAGE_PG_URI: ${PS_STORAGE_PG_URI}
+      JWT_PUBLIC_KEY: ${JWT_PUBLIC_KEY}
+      JWT_PRIVATE_KEY: ${JWT_PRIVATE_KEY}
