@@ -25,7 +25,7 @@ services:
       TZ: ${TZ}
 
   nginx:
-    ports:
+    ports: !override
       - "8087:80"
     networks:
       - default
